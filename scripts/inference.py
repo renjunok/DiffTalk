@@ -22,7 +22,7 @@ def config_parser():
     return parser
 
 def load_model_from_config(config, ckpt):
-    print(f"Loading model from {ckpt}")
+    print(f"Loading model from(加载模型来至): {ckpt}")
     pl_sd = torch.load(ckpt)
     sd = pl_sd["state_dict"]
     model = instantiate_from_config(config.model)
@@ -33,7 +33,7 @@ def load_model_from_config(config, ckpt):
 
 def get_model():
     config = OmegaConf.load("configs/latent-diffusion/talking-inference.yaml")
-    model = load_model_from_config(config, "logs/xxx.ckpt")
+    model = load_model_from_config(config, "models/model.ckpt")
     return model
 
 
